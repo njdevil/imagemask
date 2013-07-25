@@ -1,3 +1,10 @@
+##########
+# Image Mask Tool v0.3
+# copyright 2013, Modular Programming Systems Inc
+# released as GPL3
+#
+##########
+
 import Image
 import sys
 
