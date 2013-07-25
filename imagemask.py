@@ -1,15 +1,24 @@
 import Image
 import sys
 
+def check_file_type(old_file):
+    img=Image.open(old_file)
+    if img.format!="PNG":
+        print "Incorrect File Format"
+        raise SystemExit
+        
+    
 def create_mask(old_file,new_file):
     mask=[]
     img=Image.open(old_file)
     for item in list(img.getdata()):
         r,g,b,a=item
-        if a!=255:  #partially or fully transparent
+        if a==0:        #fully transparent
             r=g=b=255
-        if a==255:  #fully visible, 0% transparent
+        elif a==255:    #fully visible, 0% transparent
             r=g=b=0
+        else:           #create Grey pixels based on partial transparency   
+            r=g=b=a
         a=255
         mask.append((r,g,b,a))
     img.putdata(mask)
@@ -21,5 +30,7 @@ if __name__=="__main__":
         old_file=sys.argv[1]
         new_file=sys.argv[2]
     except:
-        print "python imagemask.py (old-image) (new-image)"
+        print "python imagemask.py (old-image) (new-image)\n\n"
+    
+    check_file_type(old_file)
     create_mask(old_file,new_file)
