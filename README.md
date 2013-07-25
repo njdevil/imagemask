@@ -6,7 +6,7 @@ PNG Image Mask generator
 
 Description
 -----------
-A Python CLI tool to create an image mask on the fly from a PNG input file.
+A Python CLI tool to create an image mask on the fly through PIL (Python Image Library) from a PNG input file.
 
 
 Opacity
