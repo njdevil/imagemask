@@ -31,6 +31,7 @@ if __name__=="__main__":
         new_file=sys.argv[2]
     except:
         print "python imagemask.py (old-image) (new-image)\n\n"
+        raise SystemExit
     
     check_file_type(old_file)
     create_mask(old_file,new_file)
